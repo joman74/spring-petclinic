@@ -44,7 +44,7 @@ public class ValidatorSpockTests extends Specification {
 	}
 	
 	// 2. TODO: validate against null first name.
-	/**def "first name cannot be null"() {
+	def "first name cannot be null"() {
 	  setup:
 	  def person = new Person();
 	  def validator = createValidator();
@@ -59,7 +59,7 @@ public class ValidatorSpockTests extends Specification {
       ConstraintViolation<Person> violation = constraintViolations.iterator().next();
 	  violation.getPropertyPath().toString().equals("firstName");
 	  violation.getMessage().equals("may not be null");
-	  }*/
+	  }
 	  
 	// 3. TODO: validate a against a valid first name (non-empty, non-null value).
 	/**def "first name is valid"() {
