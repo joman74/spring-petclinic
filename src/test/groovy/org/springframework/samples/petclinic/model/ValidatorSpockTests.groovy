@@ -44,25 +44,19 @@ public class ValidatorSpockTests extends Specification {
 	}
 	
 	// 2. TODO: validate against null first name.
-	/**  def "first name cannot be null"() {
+	def "first name cannot be null"() {
 	  setup:
 	  def person = new Person();
-	  def validator = createValidator();
 	  
 	  when:
-	  person.setFirstName("t")
 	  person.setLastName("smith")
-      Set<ConstraintViolation<Person>> constraintViolations = validator.validate(person);
 	  
 	  then:
-      constraintViolations.size() == 1;
-      ConstraintViolation<Person> violation = constraintViolations.iterator().next();
-	  violation.getPropertyPath().toString().equals("firstName");
-	  violation.getMessage().equals("may not be null");
-	  }*/
+      person.firstName == null
+	  }
 	  
 	// 3. TODO: validate a against a valid first name (non-empty, non-null value).
-	/**def "first name is valid"() {
+	def "first name is valid"() {
 	  setup:
 	  def person = new Person();
 	  def validator = createValidator();
@@ -74,10 +68,8 @@ public class ValidatorSpockTests extends Specification {
 	  
 	  then:
       constraintViolations.size() == 0;
-      ConstraintViolation<Person> violation = constraintViolations.iterator().next();
-	  violation.getPropertyPath().toString().equals("firstName");
-	  violation.getMessage().equals("is valid");
-	}*/
+      person.firstName != null;
+	}
 	
 	// 4. TODO: validate against empty last name
 	def "last name cannot be empty"() {
@@ -98,25 +90,19 @@ public class ValidatorSpockTests extends Specification {
 	}
 
 	// 5. TODO: validate against null last name
-	/**def "last name cannot be empty"() {
+	def "last name cannot be empty"() {
 	  setup:
 	  def person = new Person();
-	  def validator = createValidator();
 	  
 	  when:
 	  person.setFirstName("joe")
-	  person.setLastName(null)
-      Set<ConstraintViolation<Person>> constraintViolations = validator.validate(person);
 	  
 	  then:
-      constraintViolations.size() == 1;
-      ConstraintViolation<Person> violation = constraintViolations.iterator().next();
-	  violation.getPropertyPath().toString().equals("lastName");
-	  violation.getMessage().equals("may not be null");
-	}*/
+      person.lastName == null;
+	}
 	
 	// 6. TODO: validate a against a valid last name (non-empty, non-null value).
-	/**def "last name cannot be empty"() {
+	def "last name cannot be empty"() {
 	  setup:
 	  def person = new Person();
 	  def validator = createValidator();
@@ -127,9 +113,7 @@ public class ValidatorSpockTests extends Specification {
       Set<ConstraintViolation<Person>> constraintViolations = validator.validate(person);
 	  
 	  then:
-      constraintViolations.size() == 1;
-      ConstraintViolation<Person> violation = constraintViolations.iterator().next();
-	  violation.getPropertyPath().toString().equals("lastName");
-	  violation.getMessage().equals("is valid");
-	}*/
+      constraintViolations.size() == 0;
+      person.lastName != null;
+	}
 }
